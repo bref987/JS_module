@@ -9,6 +9,6 @@ function addWithDelay(...args) {
   return promise;
 }
 
-addWithDelay(1, 2, 3, 40, 0)
-  .then(result => console.log(result),
-        error => console.error(error));
+addWithDelay(0, 1, 2, 3, 4, 5)
+  .then(result => console.log(result))
+  .catch(error => console.error(error));
