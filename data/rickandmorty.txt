@@ -1,0 +1,6 @@
+Name : "Commander Rick",
+Status : "Dead",
+Species : "Human",
+Gender : "Male",
+Origin name : "unknown",
+Location name : "Citadel of Ricks"
