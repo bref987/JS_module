@@ -14,22 +14,20 @@ const conditionObj = {
   description: (dr) => 5 < dr.length < 13
 }
 
-function findDivergence(conditinObject, jsonObject, divergenceObject = {}) {
-  for (let key in conditinObject) {
-    if (!conditinObject[key](jsonObject[key])) {
-      divergenceObject[key] = jsonObject[key];
-    }
-  }
+function findDivergence(conditionObject, jsonObject, divergenceObject = {}) {
+  Object.keys(conditionObject)
+        .filter(key => !conditionObject[key](jsonObject[key]))
+        .map(key => divergenceObject[key] = jsonObject[key]);
   return divergenceObject;
 }
 
 function fileHandler() {
   if (fs.existsSync('./data/data.json')) {
 
-    const dataJson = JSON.parse(fs.readFileSync('./data/data.json', 'utf8')),
-          divergenceObj = findDivergence(conditionObj, dataJson);
+    const jsonObj = JSON.parse(fs.readFileSync('./data/data.json', 'utf8')),
+    divergenceObj = findDivergence(conditionObj, jsonObj);
 
-    Object.entries(divergenceObj).length === 0 ?
+    Object.keys(divergenceObj).length === 0 ?
     console.log("OK") : fs.writeFileSync('./data/jsonDivergenceData.txt', JSON.stringify(divergenceObj));
 
   } else {
