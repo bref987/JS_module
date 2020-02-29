@@ -22,8 +22,8 @@ function getResponseObject(res) {
     Name: res.data.name,
     Status: res.data.status,
     Species: res.data.species,
-    Species: res.data.species,
     Type: res.data.type,
+    Gender: res.data.gender,
     "Origin name": res.data.origin.name,
     "Location name": res.data.location.name
   }
@@ -36,7 +36,10 @@ axios.all([
 ])
   .then(axios.spread((respJson, respJpeg) => {
 
-    fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(getResponseObject(respJson)));
+    const writeObjec = getResponseObject(respJson);
+    const buffer = Buffer.from(respJpeg.data);
+
+    fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObjec)); //path ../ or ./
     console.log(respJson.data);
-    fs.writeFileSync('./data/rickandmorty.jpeg', Buffer.from(respJpeg.data));
+    fs.writeFileSync('./data/rickandmorty.jpeg', buffer); //path ../ or ./
 }));

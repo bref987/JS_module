@@ -1,6 +1,1 @@
-Name : "Commander Rick",
-Status : "Dead",
-Species : "Human",
-Gender : "Male",
-Origin name : "unknown",
-Location name : "Citadel of Ricks"
+{"Name":"Gwendolyn","Status":"unknown","Species":"Robot","Type":"Gazorpian reproduction robot","Gender":"Female","Origin name":"Gazorpazorp","Location name":"Earth (Replacement Dimension)"}
