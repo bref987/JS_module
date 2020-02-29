@@ -11,7 +11,7 @@ const conditionObj = {
   config: cf => Object.is(cf, "Common"),
   const: cn => cn.toLowerCase() === "FiRst".toLowerCase(),
   parameters: pm => pm.length === 8 && pm.every(a => typeof a === 'string'),
-  description: (dr) => 5 < dr.length < 13
+  description: dr => 5 < dr.length < 13
 }
 
 function findDivergence(conditionObject, jsonObject, divergenceObject = {}) {
@@ -31,7 +31,7 @@ function fileHandler() {
     console.log("OK") : fs.writeFileSync('./data/jsonDivergenceData.txt', JSON.stringify(divergenceObj));
 
   } else {
-    console.log("JSON file doesn't exist");
+    console.log("Error: JSON file doesn't exist");
   }
 }
 
