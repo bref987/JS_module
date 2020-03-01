@@ -42,4 +42,11 @@ axios.all([
     fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObject)); //path ../ or ./
     console.log(respJson.data);
     fs.writeFileSync('./data/rickandmorty.jpeg', buffer); //path ../ or ./
-}));
+  }))
+  .catch(function (error) {
+    if (error.response) {
+      console.log(error.response.data);
+    } else {
+      console.log('Error', error.message);
+    }
+  })
