@@ -36,8 +36,8 @@ axios.all([
 ])
   .then(axios.spread((respJson, respJpeg) => {
 
-    const writeObjec = getResponseObject(respJson),
-          buffer     = Buffer.from(respJpeg.data);
+    const writeObject = getResponseObject(respJson),
+          buffer      = Buffer.from(respJpeg.data);
 
     fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObjec)); //path ../ or ./
     console.log(respJson.data);
