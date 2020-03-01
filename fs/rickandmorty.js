@@ -39,7 +39,7 @@ axios.all([
     const writeObject = getResponseObject(respJson),
           buffer      = Buffer.from(respJpeg.data);
 
-    fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObjec)); //path ../ or ./
+    fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObject)); //path ../ or ./
     console.log(respJson.data);
     fs.writeFileSync('./data/rickandmorty.jpeg', buffer); //path ../ or ./
 }));
