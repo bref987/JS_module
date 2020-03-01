@@ -17,16 +17,10 @@ function getJpeg(url) {
   })
 }
 
-function getResponseObject(res) {
-  const responseObject = {
-    Name: res.data.name,
-    Status: res.data.status,
-    Species: res.data.species,
-    Type: res.data.type,
-    Gender: res.data.gender,
-    "Origin name": res.data.origin.name,
-    "Location name": res.data.location.name
-  }
+function getResponseObject(res, ...args) {
+  const responseObject = {};
+  args.forEach(key => responseObject[key] = res.data[key]);
+  
   return responseObject;
 }
 
@@ -36,7 +30,7 @@ axios.all([
 ])
   .then(axios.spread((respJson, respJpeg) => {
 
-    const writeObject = getResponseObject(respJson),
+    const writeObject = getResponseObject(respJson, "name", "status", "species", "type", "gender"),
           buffer      = Buffer.from(respJpeg.data);
 
     fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObject)); //path ../ or ./
