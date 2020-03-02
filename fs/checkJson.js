@@ -17,7 +17,7 @@ const conditionObj = {
 function findDivergence(conditionObject, jsonObject, divergenceObject = {}) {
   Object.keys(conditionObject)
         .filter(key => !conditionObject[key](jsonObject[key]))
-        .map(key => divergenceObject[key] = jsonObject[key]);
+        .forEach(key => divergenceObject[key] = jsonObject[key]);
   return divergenceObject;
 }
 

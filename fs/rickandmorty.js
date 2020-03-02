@@ -20,13 +20,13 @@ function getJpeg(url) {
 function getResponseObject(res, ...args) {
   const responseObject = {};
   args.forEach(key => responseObject[key] = res.data[key]);
-  
+
   return responseObject;
 }
 
 axios.all([
-  getJson('https://rickandmortyapi.com/api/character/151'),
-  getJpeg('https://rickandmortyapi.com/api/character/avatar/151.jpeg')
+  getJson('https://rickandmortyapi.com/api/character/146'),
+  getJpeg('https://rickandmortyapi.com/api/character/avatar/146.jpeg')
 ])
   .then(axios.spread((respJson, respJpeg) => {
 

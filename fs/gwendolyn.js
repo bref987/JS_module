@@ -26,7 +26,7 @@ getJson('https://rickandmortyapi.com/api/character/151')
   	getJpegFrom(respJson)
   		.then(respJpeg => {
 
-  			buffer = Buffer.from(respJpeg.data);
+  			const buffer = Buffer.from(respJpeg.data);
   			fs.writeFileSync('./data/rickandmorty.jpeg', buffer); //path ../ or ./
   	})
   })
