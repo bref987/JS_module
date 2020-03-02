@@ -1,5 +1,5 @@
-const fs = require('fs')
-const axios = require('axios')
+const fs = require('fs');
+const axios = require('axios');
 
 function getJson(url) {
   return axios({
@@ -25,17 +25,19 @@ function getResponseObject(res, ...args) {
 }
 
 axios.all([
-  getJson('https://rickandmortyapi.com/api/character/146'),
-  getJpeg('https://rickandmortyapi.com/api/character/avatar/146.jpeg')
+  getJson('https://rickandmortyapi.com/api/character/151'),
+  getJpeg('https://rickandmortyapi.com/api/character/avatar/151.jpeg')
 ])
   .then(axios.spread((respJson, respJpeg) => {
+    let pathJson = './data/rickandmorty.txt',
+        pathJpeg = './data/rickandmorty.jpeg';
 
     const writeObject = getResponseObject(respJson, "name", "status", "species", "type", "gender"),
           buffer      = Buffer.from(respJpeg.data);
 
-    fs.writeFileSync('./data/rickandmorty.txt', JSON.stringify(writeObject)); //path ../ or ./
+    fs.writeFileSync(pathJson, JSON.stringify(writeObject)); //path ../ or ./
     console.log(respJson.data);
-    fs.writeFileSync('./data/rickandmorty.jpeg', buffer); //path ../ or ./
+    fs.writeFileSync(pathJpeg, buffer); //path ../ or ./
   }))
   .catch(error => {
     if (error.response) {

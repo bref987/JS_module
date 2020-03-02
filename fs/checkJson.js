@@ -3,10 +3,10 @@ const fs = require('fs');
 const conditionObj = {
   flag: fg => typeof fg === 'boolean',
   myPromises: mP => Array.isArray(mP),
-  element: el => typeof el === 'object' && el !== null,
+  element: el => typeof el === 'object' && !Object.is(el, null),
   screenshot: sn => Object.is(sn, null),
   elementText: eT => typeof eT === 'string',
-  allElementsText: (aET, findLetters = "const") => aET.split(findLetters).length > 1,
+  allElementsText: (aET, findLetters = "const") => aET.includes(findLetters),
   counter: ct =>  ct > 10,
   config: cf => Object.is(cf, "Common"),
   const: cn => cn.toLowerCase() === "FiRst".toLowerCase(),
@@ -14,7 +14,8 @@ const conditionObj = {
   description: dr => 5 < dr.length < 13
 }
 
-function findDivergence(conditionObject, jsonObject, divergenceObject = {}) {
+function findDivergence(conditionObject, jsonObject) {
+  const divergenceObject = {};
   Object.keys(conditionObject)
         .filter(key => !conditionObject[key](jsonObject[key]))
         .forEach(key => divergenceObject[key] = jsonObject[key]);
@@ -22,16 +23,15 @@ function findDivergence(conditionObject, jsonObject, divergenceObject = {}) {
 }
 
 function fileHandler() {
-  if (fs.existsSync('./data/data.json')) {
+  let pathJson = './data/data.json';
+  if (fs.existsSync(pathJson)) {
 
-    const jsonObj = JSON.parse(fs.readFileSync('./data/data.json', 'utf8')),
+    const jsonObj = JSON.parse(fs.readFileSync(pathJson, 'utf8')),
     divergenceObj = findDivergence(conditionObj, jsonObj);
+    let pathTxt   = './data/jsonDivergenceData.txt';
 
     Object.keys(divergenceObj).length === 0 ?
-    console.log("OK") : fs.writeFileSync('./data/jsonDivergenceData.txt', JSON.stringify(divergenceObj));
-
-  } else {
-    console.log("Error: JSON file doesn't exist");
+    console.log("OK") : fs.writeFileSync(pathTxt, JSON.stringify(divergenceObj));
   }
 }
 
