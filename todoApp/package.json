@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "list": "node index list"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
     "file-system": "^2.2.2",
-    "lodash": "^4.17.15",
     "yargs": "^15.1.0"
   },
   "devDependencies": {

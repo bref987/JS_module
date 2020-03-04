@@ -1,29 +1,30 @@
 const yargs = require('yargs');
-const notes = require('./notes');
+const notes = require('./itemsOperations'); //path
+
 
 yargs.command({
   command: 'add',
-  describe: 'add new note',
+  describe: 'add new item',
   builder: {
     title: {
       type: 'string',
       demandOption: true,
-      describe: 'note title'
+      describe: 'item title'
     },
     body: {
       type: 'string',
       demandOption: true,
-      describe: 'note body'
+      describe: 'item body'
     }
   },
   handler({title, body}) {
-    notes.addNote(title, body);
+    notes.addItem(title, body);
   }
 })
 
 yargs.command({
   command: 'remove',
-  describe: 'remove note',
+  describe: 'remove item',
   builder: {
     title: {
       type: 'string',
@@ -32,24 +33,25 @@ yargs.command({
     }
   },
   handler({title}) {
-    notes.removeNote(title);
+    notes.removeItem(title);
   }
 })
 
 yargs.command({
   command: 'read',
-  describe: 'read note',
+  describe: 'read item',
   handler({title}) {
-    notes.readNote(title);
+    notes.readItem(title);
   }
 })
 
 yargs.command({
   command: 'list',
-  describe: 'list note',
+  describe: 'list items',
   handler() {
-    notes.listNotes();
+    notes.listItems();
   }
 })
+
 
 yargs.parse();
