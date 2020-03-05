@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-const notePath = './app/data/items.json'; //path
+const notePath = './app/data/items.json'; //path attention to ./ or ../
 
 function getItems() {
   const content = Array.isArray(JSON.parse(fs.readFileSync(notePath, 'utf8'))) ?
@@ -9,32 +9,44 @@ function getItems() {
   return content;
 }
 
-function addItem(title, body) {
-  const addObj = {};
-  addObj.title = title;
-  addObj.body  = body;
+function addItem(title, body) { //add item with different title
+  const addObj = {title: title, body: body},
+  arrayJson    = getItems();
 
-  const arrayJson = getItems();
-  arrayJson.every(obj => obj.title !== title) ?
-  arrayJson.push(addObj) : console.log(`Title "${title}" already exists`);
-
-  fs.writeFileSync(notePath, JSON.stringify(arrayJson, null, '\t'));
+  arrayJson.some(obj => obj.title === title) ?
+  console.log(`Title "${title}" already exists`) :
+  (
+    arrayJson.push(addObj),
+    fs.writeFileSync(notePath, JSON.stringify(arrayJson, null, '\t')),
+    console.log(`Item "${title}" have been successfully added`)
+  );
 }
 
-function removeItem(title) {
+function removeItem(title) { //remove existing item by his title; addItem logic possible
+  const initialArrayJsonLength = getItems().length;
   const arrayJson = getItems().filter(obj => obj.title !== title);
 
-  fs.writeFileSync(notePath, JSON.stringify(arrayJson, null, '\t'));
+  arrayJson.length === initialArrayJsonLength ?
+  console.log(`Title "${title}" doesn't exist`) :
+  (
+    fs.writeFileSync(notePath, JSON.stringify(arrayJson, null, '\t')),
+    console.log(`Item "${title}" have been successfully removed`)
+  );
 }
 
-function readItem(title) {
-  getItems()
-      .filter(obj => obj.title === title)
-      .forEach(obj => console.log(obj.body));
+function readItem(title) { //read an item if it exists
+  const arrayJson = getItems();
+
+  arrayJson.some(obj => obj.title === title) ?
+  arrayJson.filter(obj => obj.title === title).forEach(obj => console.log(obj)) :
+  console.log(`Item "${title}" doesn't exist`);
 }
 
-function listItems() {
-  getItems().forEach(obj => console.log(obj));
+function listItems() { //list of all items if it exists
+  const arrayJson = getItems();
+
+  arrayJson.length > 0 ?
+  arrayJson.forEach(obj => console.log(obj)) : console.log("No any items registered");
 }
 
 

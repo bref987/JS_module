@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const notes = require('./itemsOperations'); //path
+const items = require('./itemsOperations'); //path
 
 
 yargs.command({
@@ -8,17 +8,19 @@ yargs.command({
   builder: {
     title: {
       type: 'string',
+      alias: 't',
       demandOption: true,
       describe: 'item title'
     },
     body: {
       type: 'string',
+      alias: 'b',
       demandOption: true,
       describe: 'item body'
     }
   },
   handler({title, body}) {
-    notes.addItem(title, body);
+    items.addItem(title, body);
   }
 })
 
@@ -28,20 +30,29 @@ yargs.command({
   builder: {
     title: {
       type: 'string',
+      alias: 't',
       demandOption: true,
       describe: 'note title'
     }
   },
   handler({title}) {
-    notes.removeItem(title);
+    items.removeItem(title);
   }
 })
 
 yargs.command({
   command: 'read',
   describe: 'read item',
+  builder: {
+    title: {
+      type: 'string',
+      alias: 't',
+      demandOption: true,
+      describe: 'note title'
+    }
+  },
   handler({title}) {
-    notes.readItem(title);
+    items.readItem(title);
   }
 })
 
@@ -49,7 +60,7 @@ yargs.command({
   command: 'list',
   describe: 'list items',
   handler() {
-    notes.listItems();
+    items.listItems();
   }
 })
 
