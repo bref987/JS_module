@@ -12,6 +12,7 @@
   "dependencies": {
     "chokidar": "^3.3.1",
     "file-system": "^2.2.2",
+    "read-last-lines": "^1.7.2",
     "yargs": "^15.1.0"
   },
   "devDependencies": {
