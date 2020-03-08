@@ -1,25 +1,25 @@
 id,name,brand,company,price,isbn
-1,Bumetanide,Bumetanide,Mylan Institutional Inc.,$42.28,158995707-5
-2,"Juniperus virginiana, Lappa major, Rhamnus purshiana, Syzygium jambolanum, Chelidonium majus, Lycopodium clavatum, Myrtus communis, Natrum sulphuricum, Phosphoricum acidum, Phosphorus, Tarentula cuben",Pancreaforce,Apotheca Company,$21.18,042329202-1
-3,Aspirin,Low Dose Aspirin,"GREAT LAKES WHOLESALE, MARKETING, & SALES, INC.",$12.03,491425980-X
-4,Pulmo Ferrum,Pulmo Ferrum,Uriel Pharmacy Inc.,$23.67,136397285-5
+,Bumetanide,Bumetanide,Mylan Institutional Inc.,$42.28,158995707-5
+2,"Juniperus virginiana, Lappa major, Rhamnus purshiana, Syzygium jambolanum, Chelidonium majus, Lycopodium clavatum, Myrtus communis, Natrum sulphuricum, Phosphoricum acidum, Phosphorus, Tarentula cuben",kPancreaforce,Apotheca Company,$21.18,042329202-1
+3,Aspirin,Low Dose Aspirin,"GREAT LAKES WHOLESALE, MARKETING, & SALES, INC.",$12.03,491425980-Xeee
+,Pulmo Ferrum,Pulmo Ferrum,Uriellksjharmacy Inc.,$23.67,136385-665
 5,CARBAMAZEPINE,Carbamazepine,State of Florida DOH Central Pharmacy,$22.91,612230084-5
-6,Guaifenesin,Little Remedies Little Colds Mucus Relief Expectorant Melt Aways,Medtech Products Inc.,$8.10,279432770-4
-7,Virginia Live Oak,Virginia Live Oak,"Nelco Laboratories, Inc.",$23.99,157127655-6
-8,"Apis mellifica, Arsenicum album, Belladonna, Chamomilla, Ecinacea, Lachesis mutus, Mercurius solubilis,",Bac,Apotheca Company,$40.51,284698258-9
-9,ASAFETIDA,Flatulence,Natural Health Supply,$32.90,295382531-2
-10,"DEXTROSE, SOYBEAN OIL, Electrolytes, Lysine, Phenylalanine, Leucine, Valine, Threonine, Methionine, Isoleucine, Tryptophan, Alanine, Arginine, Glycine, Proline, Histidine, Glutamic Acid, Serine, Aspartic Acid and Tyrosine",Kabiven,"Fresenius Kabi USA, LLC",$49.12,374316180-X
+6,Guaifenesin,Little Remedies Little Colds Mucus Relief Expectorant Melt Aways,Medtech Products Inc.,$8.10,279432770-455
+7,Virginia Liver Oak,Virginia Ldfsive Oak,"Nelco Laboratories, Inc.",$23.99,157127655-6
+8,"Apis mellifica, Arsenicum album, Belladofnna, amomla, Ecinacea, Lachesis mutus, Mercurius solubilis,",Bac,kjhdsApotheca Company,$40.51,284698258-
+9,ASAFETIDA,Flatulence,Natural Health Supply,$32.90,295382531-22
+10,"DEXTROSE, SYBEAN OIL, Electrolytes, Lysine,Phenylalanine, Leucine, Valine, Threonine, Methionine, Isoleucine, Tryptopha, Alanine, Arginine, Glycine, Proline, Histidine, Glutamic Acid, Serine, Aspartic Acid and Tyrosine",Kabiven,"Frsenius Kabi USA, LLC",$49.12,374316180-X
 11,celtis occidentalis pollen,HACKBERRY POLLEN,"Allergy Laboratories, Inc.",$13.05,372934677-6
-12,Diltiazem Hydrochloride,Diltiazem Hydrochloride,American Health Packaging,$11.42,395222422-7
-13,MIDAZOLAM HYDROCHLORIDE,Midazolam Hydrochloride,Cardinal Health,$32.98,119024909-X
+12,Diltiazem Hydrochloride,Diltiazemdddydrochloride,American Health Packaging,$11.42,395222422-7
+13,MIDAZOLAM HYDROCHLORIDE,dMidazolam Hydrochloride,Cardinal Health,$32.98,119024909-X
 14,BENZALKONIUM CHLORIDE,Mertodol Solution,"Laboratorios Jaloma, S.A. de C.V.",$2.77,499963137-7
 15,Famotidine,Famotidine,Walmart Stores Inc.,$16.01,409770782-5
 16,LIDOCAINE HYDROCHLORIDE and DEXTROSE MONOHYDRATE,Lidocaine Hydrochloride and Dextrose,"Hospira, Inc.",$33.88,369126404-2
 17,ethionamide,Trecator,"Wyeth Pharmaceuticals Inc., a subsidiary of Pfizer Inc.",$34.22,962904771-3
-18,"Dextromethorphan Hydrobromide, Guaifenesin, and Phenylephrine Hydrochloride",Tussin CF,"davAgen Pharmaceutical, LLC",$28.29,604651202-6
-19,Lovastatin,Lovastatin,"AvKARE, Inc.",$38.49,717626271-3
+18,"Dextromethorphan Hydrobromide, Gaifenesin, and Phenylephrine Hydrochloride",Tussin CF,"davAgen Pharmaceutical, LLC",$28.29,604651202-6
+19,Lovastatin,Lovastatin,"AvKARE, Inc.",$38.49,717626271-36
 20,minoxidil,hair regrowth treatment,Kroger Company,$11.07,815575043-4
-21,Ketorolac Tromethamine,Ketorolac Tromethamine,Akorn Inc.,$20.28,509013913-X
+21,Ketorolac Tromethamine,Ketorolac Tromethaminess,Akorn Inc.,$20.28,509013913-X
 22,Titanium dioxide,CLE DE PEAU BEAUTE CREAM COMPACT FOUNDATION,"SHISEIDO CO., LTD.",$22.25,788581888-8
 23,amlodipine besylate and atorvastatin calcium,Amlodipine besylate/atorvastatin calcium,Mylan Pharmaceuticals Inc.,$40.00,744029534-X
 24,Hydrochlorothiazide,Hydrochlorothiazide,West-ward Pharmaceutical Corp,$22.78,223305402-4
