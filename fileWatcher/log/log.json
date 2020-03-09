@@ -1,7 +1,5 @@
 [
-	"[3/9/2020, 2:19:12 AM] File ./data/MOCK_DATA(1).csv has been added",
-	"[3/9/2020, 2:19:12 AM] File ./data/dataOne.csv has been added",
-	"[3/9/2020, 2:19:22 AM] File ./data/dataOne.csv has been changed",
-	"[3/9/2020, 2:19:27 AM] File ./data/MOCK_DATA(1).csv has been changed",
-	"[3/9/2020, 2:35:34 AM] File ./data/dataOne.csv has been changed"
+	"[2020-3-9 15:39:35] File ./data\\MOCK_DATA.csv has been added",
+	"[2020-3-9 15:39:35] File ./data\\MOCK_DATA_SECOND.csv has been added",
+	"[2020-3-9 15:39:38] File ./data\\MOCK_DATA.csv has been changed"
 ]

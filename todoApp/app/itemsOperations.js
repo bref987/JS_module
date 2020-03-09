@@ -1,15 +1,15 @@
-const fs = require('fs'); //add json if doesnt exist
+const fs = require('fs');
 
 
 const itemsPath = './app/data/items.json'; //path attention to ./ or ../
 
-(() => {
+(() => { //getItems
   try {
-    if (!fs.existsSync(itemsPath) || 
+    if (!fs.existsSync(itemsPath) ||
         !Array.isArray(JSON.parse(fs.readFileSync(itemsPath)))) {
       fs.writeFileSync(itemsPath, JSON.stringify([]));
-    } 
-  } catch {
+    }
+  } catch (er) {
     fs.writeFileSync(itemsPath, JSON.stringify([]));
   }
 })();
@@ -20,7 +20,7 @@ function getItems() {
 
 function addItem(title, body) { //add item with different title
   const addObj = {title: title, body: body},
-  arrayJson    = getItems();
+    arrayJson = getItems();
 
   if (!arrayJson.some(obj => obj.title === title)) {
 
@@ -35,7 +35,7 @@ function addItem(title, body) { //add item with different title
 
 function removeItem(title) { //remove existing item by his title; addItem logic possible
   const initialArrayJsonLength = getItems().length,
-                     arrayJson = getItems().filter(obj => obj.title !== title);
+    arrayJson = getItems().filter(obj => obj.title !== title);
 
   if (arrayJson.length !== initialArrayJsonLength) {
 

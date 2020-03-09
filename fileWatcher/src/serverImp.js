@@ -1,15 +1,8 @@
-const fs = require('fs'),
-Importer = require('./services/importer');
-
-
-
-const pathToImport = './dataImport/toImport.json';
+const Importer = require('./services/importer'),
+  toImport = './dataImport/toImport.json';
 
 const importer = new Importer();
 
 
-
-importer.import(pathToImport);
-importer.importSync(pathToImport);
-
-
+importer.import(toImport);
+//importer.importSync(toImport);
