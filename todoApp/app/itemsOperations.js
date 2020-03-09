@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const itemsPath = './app/data/items.json'; //path attention to ./ or ../
 
-(() => { //getItems
+function getItems() {
   try {
     if (!fs.existsSync(itemsPath) ||
         !Array.isArray(JSON.parse(fs.readFileSync(itemsPath)))) {
@@ -12,9 +12,7 @@ const itemsPath = './app/data/items.json'; //path attention to ./ or ../
   } catch (er) {
     fs.writeFileSync(itemsPath, JSON.stringify([]));
   }
-})();
 
-function getItems() {
   return JSON.parse(fs.readFileSync(itemsPath));
 }
 
