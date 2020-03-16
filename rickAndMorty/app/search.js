@@ -42,8 +42,8 @@ function searchBy(...args) {
 		Object.entries(objArg)
 									.forEach(([key, value]) =>
 										filteredData = filteredData
-																			.filter(a => String(a[key]).toLowerCase() ===
-																									String(value).toLowerCase()));
+																			.filter(a => String(a[key]).toLowerCase()
+																							=== String(value).toLowerCase()));
 
 		fs.writeFileSync(pathToData, JSON.stringify(filteredData, null, '\t'));
 	} catch(err) {
