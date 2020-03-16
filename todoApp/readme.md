@@ -1,4 +1,4 @@
-!csv files are tested with libreoffice
+! - csv files are tested with libreoffice
 
 run todoApp: node index or npm start + commands (add, remove, read, list)
 
