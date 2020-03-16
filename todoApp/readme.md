@@ -1,3 +1,5 @@
+!csv files are tested with libreoffice
+
 run todoApp: node index or npm start + commands (add, remove, read, list)
 
 add: node index add -t "title" -b "body"
