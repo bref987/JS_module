@@ -1,6 +1,6 @@
-const yargs = require('yargs');
-const items = require('./itemsOperations'); //path
-
+const yargs = require('yargs'),
+ items = require('./itemsOperations'), //path
+ excel = require('./excelConverter');
 
 yargs.command({
   command: 'add',
@@ -61,6 +61,78 @@ yargs.command({
   describe: 'list items',
   handler() {
     items.listItems();
+  }
+})
+
+yargs.command({
+  command: 'sort',
+  describe: 'sort items',
+  builder: {
+    type: {
+      type: 'string',
+      alias: 't',
+      demandOption: true,
+      describe: 'sort'
+    },
+    item: {
+      type: 'string',
+      alias: 'i',
+      demandOption: false,
+      describe: 'sort'
+    },
+    order: {
+      type: 'string',
+      alias: 'o',
+      demandOption: false,
+      describe: 'sort'
+    }
+  },
+  handler({type, item, order}) {
+    items.sortItems(type, item, order);
+  }
+})
+
+yargs.command({
+  command: 'update',
+  describe: 'update item',
+  builder: {
+    title: {
+      type: 'string',
+      alias: 't',
+      demandOption: true,
+      describe: 'item title'
+    },
+    newTitle: {
+      type: 'string',
+      alias: 'nt',
+      demandOption: false,
+      describe: 'item newTitle'
+    },
+    newBody: {
+      type: 'string',
+      alias: 'nb',
+      demandOption: false,
+      describe: 'item newBody'
+    }
+  },
+  handler({title, newTitle, newBody}) {
+    items.findAndUpdate(title, newTitle, newBody);
+  }
+})
+
+yargs.command({
+  command: 'toCsv',
+  describe: 'json to csv',
+  handler() {
+    excel.writeToCsv();
+  }
+})
+
+yargs.command({
+  command: 'toJson',
+  describe: 'csv to json',
+  handler() {
+    excel.readFromCsv();
   }
 })
 

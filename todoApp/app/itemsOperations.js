@@ -1,7 +1,12 @@
-const fs = require('fs');
+const fs = require('fs'),
+ format = require('date-format');
 
+const itemsPath = './app/data/items.json';
 
-const itemsPath = './app/data/items.json'; //path attention to ./ or ../
+function writeArrayJson(array) {
+  console.log('Successfully done');
+  return fs.writeFileSync(itemsPath, JSON.stringify(array, null, '\t'));
+}
 
 function getItems() {
   try {
@@ -16,28 +21,32 @@ function getItems() {
   return JSON.parse(fs.readFileSync(itemsPath));
 }
 
-function addItem(title, body) { //add item with different title
-  const addObj = {title: title, body: body},
+function addItem(title, body) {
+  const addObj = {
+    title: title,
+    body: body,
+    date: format('dd/MM/yyyy hh:mm:ss', new Date())
+  },
     arrayJson = getItems();
 
   if (!arrayJson.some(obj => obj.title === title)) {
 
     arrayJson.push(addObj);
-    fs.writeFileSync(itemsPath, JSON.stringify(arrayJson, null, '\t'));
-    console.log(`Item "${title}" have been successfully added`);
+    writeArrayJson(arrayJson);
 
+    console.log(`Item "${title}" have been successfully added`);
   } else {
-    console.log(`Title "${title}" already exists`);
+    findAndUpdate(title, title, body) 
   }
 }
 
-function removeItem(title) { //remove existing item by his title; addItem logic possible
+function removeItem(title) {
   const initialArrayJsonLength = getItems().length,
-    arrayJson = getItems().filter(obj => obj.title !== title);
+    arrayJsonFiltered = getItems().filter(obj => obj.title !== title);
 
-  if (arrayJson.length !== initialArrayJsonLength) {
+  if (arrayJsonFiltered.length !== initialArrayJsonLength) {
 
-    fs.writeFileSync(itemsPath, JSON.stringify(arrayJson, null, '\t'));
+    writeArrayJson(arrayJsonFiltered);
     console.log(`Item "${title}" have been successfully removed`);
 
   } else {
@@ -45,33 +54,118 @@ function removeItem(title) { //remove existing item by his title; addItem logic 
   }
 }
 
-function readItem(title) { //read an item if it exists
+function readItem(title) {
   const arrayJson = getItems();
-
   if (arrayJson.some(obj => obj.title === title)) {
-
     arrayJson
       .filter(obj => obj.title === title)
       .forEach(obj => console.log(obj));
-
   } else {
     console.log(`Item "${title}" doesn't exist`);
   }
 }
 
-function listItems() { //list of all items if it exists
+function listItems() {
   const arrayJson = getItems();
-
   if (arrayJson.length > 0 ) {
-
     arrayJson.forEach(obj => console.log(obj));
+  } else {
+    console.log('No any items registered');
+  }
+}
+
+function sortItems(type, item, order) {
+
+  const sortObj = {
+
+    date() {
+      const arrayJson = getItems();
+
+      if (order === 'descending' || !order) {
+        arrayJson.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+        writeArrayJson(arrayJson);
+
+      } else if (order === 'ascending') {
+        arrayJson.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+        writeArrayJson(arrayJson);
+
+      } else {
+        console.log('Incorrect argument');
+      }
+    },
+
+    length() {
+      const arrayJson = getItems();
+
+      if (item === 'title' && (order === 'descending' || !order)) {
+        arrayJson.sort((a, b) => b.title.length - a.title.length);
+        writeArrayJson(arrayJson);
+
+      } else if (item === 'title' && order === 'ascending') {
+        arrayJson.sort((a, b) => a.title.length - b.title.length);
+        writeArrayJson(arrayJson);
+
+      } else if (item === 'body' && (order === 'descending' || !order)) {
+        arrayJson.sort((a, b) => b.body.length - a.body.length);
+        writeArrayJson(arrayJson);
+
+      } else if (item === 'body' && order === 'ascending') {
+        arrayJson.sort((a, b) => a.body.length - b.body.length);
+        writeArrayJson(arrayJson);
+
+      } else {
+        console.log('Incorrect argument');
+      }
+    },
+
+    alphabet() {
+      const arrayJson = getItems();
+
+      if ((item === 'title' || !item) && (order === 'descending' || !order)) {
+        arrayJson.sort((a, b) => b.title > a.title ? 1 : -1);
+        writeArrayJson(arrayJson);
+
+      } else if ((item === 'title' || !item) && order === 'ascending') {
+        arrayJson.sort((a, b) => b.title < a.title ? 1 : -1);
+        writeArrayJson(arrayJson);
+
+      } else {
+        console.log('Incorrect argument');
+      }
+    }
+  }
+
+  try {
+    sortObj[type]();
+  } catch(er) {
+    console.log('Incorrect sort type');
+  }
+}
+
+function findAndUpdate(title, newTitle, newBody) {
+  const arrayJson = getItems(),
+    someTitle = getItems().some(obj => obj.title === title),
+    filteredByTitle = arrayJson.filter(obj => obj.title === title),
+    date = format('dd/MM/yyyy hh:mm:ss', new Date());
+
+  if (someTitle && newTitle && newBody) {
+    filteredByTitle.forEach(obj => (obj.title = newTitle, obj.body = newBody, obj.date = date));
+    writeArrayJson(arrayJson);
+
+  } else if (someTitle && newTitle) {
+    filteredByTitle.forEach(obj => (obj.title = newTitle, obj.date = date));
+    writeArrayJson(arrayJson);
+
+  } else if (someTitle && newBody) {
+    filteredByTitle.forEach(obj => (obj.body = newBody, obj.date = date));
+    writeArrayJson(arrayJson);
 
   } else {
-    console.log("No any items registered");
+    console.log('Incorrect argument');
   }
 }
 
 
 module.exports = {
-  addItem, removeItem, readItem, listItems
+  addItem, removeItem, readItem, listItems, sortItems, findAndUpdate
 }
