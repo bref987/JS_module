@@ -46,8 +46,8 @@ function searchBy(...args) {
 																									String(value).toLowerCase()));
 
 		fs.writeFileSync(pathToData, JSON.stringify(filteredData, null, '\t'));
-	} catch(er) {
-		console.log('Incorrect argument');
+	} catch(err) {
+		console.log(`${err.name} : ${err.message}`);
 	}
 }
 
