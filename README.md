@@ -1,1 +1,1 @@
-# JS_module
+# JS_module automation lab
