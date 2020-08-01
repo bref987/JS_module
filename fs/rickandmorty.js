@@ -32,7 +32,7 @@ axios.all([
     let pathJson = './data/rickandmorty.txt',
         pathJpeg = './data/rickandmorty.jpeg';
 
-    const writeObject = getResponseObject(respJson, "name", "status", "species", "type", "gender"),
+    const writeObject = getResponseObject(respJson, 'name', 'status', 'species', 'type', 'gender'),
           buffer      = Buffer.from(respJpeg.data);
 
     fs.writeFileSync(pathJson, JSON.stringify(writeObject)); //path ../ or ./
